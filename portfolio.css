@@ -200,7 +200,7 @@ section{
     width: 100%;
     height: 100vh;
     position:relative;
-    background-image: url(img/me.jpg);
+    background-image: url(me.jpg);
     background-size: cover;
     background-position: center;
     color: white;

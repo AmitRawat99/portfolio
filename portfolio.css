@@ -20,6 +20,7 @@ header{
     z-index:1;
     transition: 0.2s ease-in;
     scrollbar-width: none;
+    border-right: 2px solid white;
 }
 header .profile{
     text-align: center;

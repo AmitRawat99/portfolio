@@ -1,0 +1,16 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --Cookie-Font : "Merriweather", serif;
+  --Nato-Font  : "Noto Sans", serif;
+}
+
+.hello{
+  h1{
+    font-family: var(--Nato-Font);
+  }
+}

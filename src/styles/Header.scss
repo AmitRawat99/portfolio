@@ -1,0 +1,253 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black-color: black;
+  --white-color: white;
+  --orange-color: orangered;
+  --Cookie-Font: "Merriweather", serif;
+  --Nato-Font: "Noto Sans", serif;
+  --green-color: green;
+}
+
+@mixin display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin liItem {
+  display: flex;
+  gap: 30px;
+}
+@mixin align-item {
+  display: flex;
+  align-items: center;
+}
+
+#container-fluid {
+  width: 100%;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.022);
+  box-shadow: 0 5px 32px #7a7a7d5e;
+  z-index: 999;
+  backdrop-filter: blur(99px);
+  -webkit-backdrop-filter: blur(99px);
+  position: fixed;
+  top: 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  .header-container {
+    height: 80px;
+    @include display;
+  }
+  .header-logo {
+    h1 {
+      cursor: pointer;
+      font-size: 20px;
+      letter-spacing: 2px;
+      @include align-item;
+      color: green;
+      font-weight: bold;
+    }
+    h5 {
+      width: 50px;
+      height: 50px;
+      font-size: 26px;
+      margin-right: 2px;
+      @include align-item;
+      justify-content: center;
+      background-color: var(--orange-color);
+      border-radius: 50%;
+    }
+    a {
+      text-decoration: none;
+      color: var(--black-color);
+    }
+  }
+  .liList {
+    @include liItem;
+    li {
+      list-style-type: none;
+      font-size: 17px;
+      letter-spacing: 1px;
+      position: relative;
+      &::after {
+        content: "";
+        width: 0%;
+        transition: 0.5s ease-in;
+        height: 3px;
+        background-color: green;
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+      }
+      &:hover::after {
+        width: 100%;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: var(--black-color);
+    }
+  }
+}
+#slider-container {
+  max-width: 1250px;
+  margin: auto;
+}
+.FaMoon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  color: #333;
+  transition: background-color 0.3sease, color 0.3sease;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.header-slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5em;
+  .header-slider-images {
+    img {
+      transition: opacity 1s ease-in-out;
+      // width: 600px;
+      max-width: 600px;
+      margin-top: 20px;
+      height: 400px;
+    }
+  }
+  .header-slider-content {
+    p{
+      font-size: 18px;
+      padding: 10px 10px 0 0;
+      .UserName{
+        color: var(--green-color);
+        font-size: 20px;
+        font-weight: bold;
+        font-family: var(--Nato-Font);
+        margin: 0 10px;
+        border-bottom: 2px solid var(--green-color);
+      }
+    }
+    h3 {
+      color: var(--green-color);
+      font-weight: bold;
+      font-size: 22px;
+    }
+  }
+}
+.font-icon {
+  font-size: 20px;
+  margin: 5px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 50%;
+  color: var(--black-color);
+}
+.social-icons {
+  display: flex;
+  align-items: center;
+  h2 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+#checkbox {
+  display: none;
+}
+#faBarsIcon {
+  position: absolute;
+  right: 20px;
+  top: 38%;
+  cursor: pointer;
+  display: none;
+  font-size: 30px;
+}
+
+// #Home{
+//   border: 2px solid red;
+// }
+
+// .dark-mode
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+.dark-mode .liList a {
+  color: white !important;
+}
+.dark-mode .FaMoon {
+  color: white;
+}
+.dark-mode .font-icon {
+  font-size: 20px;
+  margin: 5px;
+  border: 1px solid var(--white-color);
+  padding: 10px;
+  border-radius: 50%;
+  color: var(--white-color);
+}
+.dark-mode .liList {
+
+  @include liItem;
+  li {
+    list-style-type: none;
+    font-size: 17px;
+    letter-spacing: 1px;
+    position: relative;
+    &::after {
+      content: "";
+      width: 0%;
+      transition: 0.5s ease-in;
+      height: 3px;
+      background-color: orange;
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+    }
+    &:hover::after {
+      width: 100%;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: var(--black-color);
+  }
+}
+
+@media (max-width: 767px) {
+  .liList {
+    width: 50%;
+    height: fit-content;
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    transition: transform 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white; /* Add a background for visibility */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #faBarsIcon {
+    display: block;
+    cursor: pointer;
+  }
+  #checkbox:checked ~ .liList {
+    right: 0;
+  }
+  .dark-mode .liList a {
+    color: black !important;
+  }
+  .dark-mode .FaMoon {
+    color: black;
+  }
+}
